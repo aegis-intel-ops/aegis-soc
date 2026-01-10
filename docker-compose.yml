@@ -54,6 +54,13 @@ services:
       - "8200:80"
     restart: unless-stopped
 
+  shodan-dashboard:
+    build: ./dashboards/shodan-dashboard
+    container_name: aegis-shodan-dashboard
+    ports:
+      - "8201:80"
+    restart: unless-stopped
+
   ai-protect-dashboard:
     build: ./dashboards/ai-protect-dashboard
     container_name: aegis-ai-dashboard

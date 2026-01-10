@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shodan Dashboard - Aegis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>🔴 Shodan Intelligence</h1>
+        <div class="status-bar">
+            <span class="status" id="status">Checking...</span>
+            <span class="credits" id="credits"></span>
+        </div>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>🖥️ IP/Host Lookup</h2>
+            <p class="desc">Get detailed information about an IP address</p>
+            <form id="hostForm">
+                <input type="text" id="hostIp" placeholder="Enter IP (e.g., 8.8.8.8)" required>
+                <button type="submit">Scan</button>
+            </form>
+            <div id="hostResults" class="results"></div>
+        </section>
+
+        <section class="card">
+            <h2>🔍 Search Database</h2>
+            <p class="desc">Search Shodan's database of internet-connected devices</p>
+            <form id="searchForm">
+                <input type="text" id="searchQuery" placeholder="e.g., apache country:US, port:22, org:Google" required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="searchResults" class="results"></div>
+        </section>
+
+        <section class="card">
+            <h2>🌐 DNS Lookup</h2>
+            <p class="desc">Resolve domain names to IP addresses</p>
+            <form id="dnsForm">
+                <input type="text" id="dnsDomain" placeholder="Enter domain (e.g., google.com)" required>
+                <button type="submit">Resolve</button>
+            </form>
+            <div id="dnsResults" class="results"></div>
+        </section>
+
+        <section class="card">
+            <h2>💀 Exploit Search</h2>
+            <p class="desc">Find known exploits and vulnerabilities</p>
+            <form id="exploitForm">
+                <input type="text" id="exploitQuery" placeholder="e.g., CVE-2021, apache, nginx" required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="exploitResults" class="results"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by <a href="https://shodan.io" target="_blank">Shodan.io</a> | Aegis Intel Ops</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
