@@ -7,6 +7,7 @@
 | Service | API Port | Dashboard | Status |
 |---------|----------|-----------|--------|
 | **OSINT** | 8000 | 8200 | ✅ Live |
+| **Shodan** | - | 8201 | ✅ Live |
 | **AI Protection** | 8010 | 8210 | ✅ Live |
 | **Voice Protection** | 8020 | 8220 | ✅ Live |
 | **SpiderFoot** | 5001 | - | ✅ Live |
