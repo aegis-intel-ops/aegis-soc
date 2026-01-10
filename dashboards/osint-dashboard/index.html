@@ -1,38 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSINT Dashboard - Aegis</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>🔍 OSINT Dashboard</h1>
         <span class="status" id="status">Connecting...</span>
     </header>
-    
+
     <main>
+        <!-- Shodan Section -->
+        <section class="card shodan">
+            <h2>🌐 Shodan - IP Lookup</h2>
+            <form id="shodanForm">
+                <input type="text" id="shodanIp" placeholder="Enter IP address (e.g., 8.8.8.8)" required>
+                <button type="submit">Scan IP</button>
+            </form>
+            <div id="shodanResults" class="results"></div>
+        </section>
+
+        <section class="card shodan">
+            <h2>🔎 Shodan - Search</h2>
+            <form id="shodanSearchForm">
+                <input type="text" id="shodanQuery" placeholder="Search query (e.g., apache country:US)" required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="shodanSearchResults" class="results"></div>
+        </section>
+
+        <!-- SpiderFoot Section -->
+        <section class="card spiderfoot">
+            <h2>🕷️ SpiderFoot - Full Scan</h2>
+            <form id="spiderfootForm">
+                <input type="text" id="spiderfootTarget" placeholder="Target (domain, IP, email, username)" required>
+                <select id="scanType">
+                    <option value="all">Full Scan (Comprehensive)</option>
+                    <option value="passive">Passive Only</option>
+                    <option value="dns">DNS Enumeration</option>
+                    <option value="social">Social Media</option>
+                </select>
+                <button type="submit">Start Scan</button>
+            </form>
+            <div id="spiderfootResults" class="results"></div>
+        </section>
+
+        <!-- Original OSINT Tools -->
         <section class="card">
-            <h2>Domain Reconnaissance</h2>
+            <h2>📧 Domain Reconnaissance</h2>
             <form id="reconForm">
                 <input type="text" id="domain" placeholder="Enter domain (e.g., example.com)" required>
                 <button type="submit">Run Recon</button>
             </form>
             <div id="reconResults" class="results"></div>
         </section>
-        
+
         <section class="card">
-            <h2>Email Lookup</h2>
+            <h2>📨 Email Lookup</h2>
             <form id="emailForm">
                 <input type="email" id="email" placeholder="Enter email address" required>
                 <button type="submit">Lookup</button>
             </form>
             <div id="emailResults" class="results"></div>
         </section>
-        
+
         <section class="card">
-            <h2>Username Search</h2>
+            <h2>👤 Username Search</h2>
             <form id="usernameForm">
                 <input type="text" id="username" placeholder="Enter username" required>
                 <button type="submit">Search</button>
@@ -40,7 +78,8 @@
             <div id="usernameResults" class="results"></div>
         </section>
     </main>
-    
+
     <script src="app.js"></script>
 </body>
+
 </html>
