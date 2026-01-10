@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Protection Dashboard - Aegis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>🛡️ AI Protection Dashboard</h1>
+        <span class="status" id="status">Connecting...</span>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Fawkes Face Protection</h2>
+            <p class="desc">Protect images from facial recognition AI</p>
+            <form id="fawkesForm">
+                <input type="file" id="imageFile" accept="image/*" required>
+                <button type="submit">Protect Image</button>
+            </form>
+            <div id="fawkesStatus" class="results"></div>
+        </section>
+
+        <section class="card">
+            <h2>Job Status</h2>
+            <form id="statusForm">
+                <input type="text" id="jobId" placeholder="Enter job ID" required>
+                <button type="submit">Check Status</button>
+            </form>
+            <div id="jobResults" class="results"></div>
+        </section>
+
+        <section class="card coming-soon">
+            <h2>MIST v2 (Coming Soon)</h2>
+            <p class="desc">Advanced image protection - GPU required</p>
+        </section>
+
+        <section class="card coming-soon">
+            <h2>PhotoGuard (Coming Soon)</h2>
+            <p class="desc">Image manipulation protection - GPU required</p>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

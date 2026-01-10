@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Dashboard - Aegis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🔍 OSINT Dashboard</h1>
+        <span class="status" id="status">Connecting...</span>
+    </header>
+    
+    <main>
+        <section class="card">
+            <h2>Domain Reconnaissance</h2>
+            <form id="reconForm">
+                <input type="text" id="domain" placeholder="Enter domain (e.g., example.com)" required>
+                <button type="submit">Run Recon</button>
+            </form>
+            <div id="reconResults" class="results"></div>
+        </section>
+        
+        <section class="card">
+            <h2>Email Lookup</h2>
+            <form id="emailForm">
+                <input type="email" id="email" placeholder="Enter email address" required>
+                <button type="submit">Lookup</button>
+            </form>
+            <div id="emailResults" class="results"></div>
+        </section>
+        
+        <section class="card">
+            <h2>Username Search</h2>
+            <form id="usernameForm">
+                <input type="text" id="username" placeholder="Enter username" required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="usernameResults" class="results"></div>
+        </section>
+    </main>
+    
+    <script src="app.js"></script>
+</body>
+</html>

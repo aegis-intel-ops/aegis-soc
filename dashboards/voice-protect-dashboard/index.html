@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Protection Dashboard - Aegis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>🎙️ Voice Protection Dashboard</h1>
+        <span class="status" id="status">Connecting...</span>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>AI Audio Detection</h2>
+            <p class="desc">Analyze audio to detect AI-generated content</p>
+            <form id="analyzeForm">
+                <input type="file" id="audioFile" accept="audio/*" required>
+                <button type="submit">Analyze Audio</button>
+            </form>
+            <div id="analyzeResults" class="results"></div>
+        </section>
+
+        <section class="card">
+            <h2>Audio Watermarking</h2>
+            <p class="desc">Add invisible watermark for ownership verification</p>
+            <form id="watermarkForm">
+                <input type="file" id="watermarkFile" accept="audio/*" required>
+                <input type="text" id="owner" placeholder="Owner name (optional)">
+                <button type="submit">Add Watermark</button>
+            </form>
+            <div id="watermarkResults" class="results"></div>
+        </section>
+
+        <section class="card">
+            <h2>Verify Watermark</h2>
+            <form id="verifyForm">
+                <input type="text" id="watermarkId" placeholder="Watermark ID (e.g., A1B2C3D4)" required>
+                <button type="submit">Verify</button>
+            </form>
+            <div id="verifyResults" class="results"></div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

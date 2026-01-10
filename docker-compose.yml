@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # ===== API Services =====
+  
+  osint:
+    build: ./services/osint
+    container_name: aegis-osint
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  ai-protect:
+    build: ./services/ai-protect
+    container_name: aegis-ai-protect
+    ports:
+      - "8010:8010"
+    restart: unless-stopped
+    volumes:
+      - ./data/ai-protect:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  voice-protect:
+    build: ./services/voice-protect
+    container_name: aegis-voice-protect
+    ports:
+      - "8020:8020"
+    restart: unless-stopped
+    volumes:
+      - ./data/voice-protect:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  # ===== Dashboards =====
+  
+  osint-dashboard:
+    build: ./dashboards/osint-dashboard
+    container_name: aegis-osint-dashboard
+    ports:
+      - "8200:80"
+    restart: unless-stopped
+
+  ai-protect-dashboard:
+    build: ./dashboards/ai-protect-dashboard
+    container_name: aegis-ai-dashboard
+    ports:
+      - "8210:80"
+    restart: unless-stopped
+
+  voice-protect-dashboard:
+    build: ./dashboards/voice-protect-dashboard
+    container_name: aegis-voice-dashboard
+    ports:
+      - "8220:80"
+    restart: unless-stopped
+
+volumes:
+  data:
