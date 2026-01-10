@@ -17,7 +17,7 @@ services:
       - spiderfoot
 
   spiderfoot:
-    image: spiderfoot/spiderfoot:latest
+    image: ghcr.io/smicallef/spiderfoot:latest
     container_name: aegis-spiderfoot
     ports:
       - "5001:5001"
