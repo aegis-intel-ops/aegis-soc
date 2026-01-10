@@ -2,47 +2,171 @@
 
 A comprehensive Security Operations Center (SOC) platform for VIP protection services.
 
-## Services
-
-| Service | Port | Dashboard | Description |
-|---------|------|-----------|-------------|
-| OSINT | 8000 | 8200 | Domain recon, email/username lookup |
-| AI Protection | 8010 | 8210 | Fawkes face cloaking, MIST v2, PhotoGuard |
-| Voice Protection | 8020 | 8220 | AI audio detection, watermarking |
-| n8n | 5678 | - | Workflow automation |
-
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 # Clone the repo
 git clone https://github.com/aegis-intel-ops/aegis-soc.git
 cd aegis-soc
 
+# Set environment variables
+echo "SHODAN_API_KEY=your-key-here" > .env
+
 # Start all services
-docker-compose up -d
+docker compose up -d
 
 # Check status
-docker-compose ps
+docker compose ps
 ```
 
-## Architecture
+## 📊 Services
+
+| Service | Port | Description |
+|---------|------|-------------|
+| **OSINT API** | 8000 | Intelligence gathering (Shodan, SpiderFoot, TheHarvester) |
+| **AI Protection** | 8010 | Fawkes face cloaking, image protection |
+| **Voice Protection** | 8020 | AI audio detection, watermarking |
+| **SpiderFoot** | 5001 | Full OSINT automation (100+ sources) |
+| **n8n** | 5678 | Workflow automation |
+
+### Dashboards
+
+| Dashboard | Port |
+|-----------|------|
+| OSINT | 8200 |
+| AI Protection | 8210 |
+| Voice Protection | 8220 |
+
+## 🔍 OSINT Endpoints
+
+### Shodan (`/api/osint/shodan/`)
+```bash
+# Host information
+GET /api/osint/shodan/host/{ip}
+
+# Search database
+GET /api/osint/shodan/search?query=apache+country:US
+
+# DNS lookup
+GET /api/osint/shodan/dns/{domain}
+
+# Check API credits
+GET /api/osint/shodan/api-info
+```
+
+### SpiderFoot (`/api/osint/spiderfoot/`)
+```bash
+# Start scan
+POST /api/osint/spiderfoot/scan
+Body: {"target": "example.com", "scan_type": "all"}
+
+# Check status
+GET /api/osint/spiderfoot/status/{scan_id}
+
+# Get results
+GET /api/osint/spiderfoot/results/{scan_id}
+```
+
+### Core OSINT (`/api/osint/`)
+```bash
+# Domain recon
+POST /api/osint/recon
+Body: {"domain": "example.com"}
+
+# Email lookup
+GET /api/osint/email/{email}
+
+# Username search
+GET /api/osint/username/{username}
+```
+
+## 🛡️ AI Protection Endpoints
+
+```bash
+# Protect image with Fawkes
+POST /api/protect/fawkes
+Body: multipart/form-data with image file
+
+# Check job status
+GET /api/protect/status/{job_id}
+```
+
+## 🎙️ Voice Protection Endpoints
+
+```bash
+# Analyze audio for AI detection
+POST /api/voice/analyze
+Body: multipart/form-data with audio file
+
+# Add watermark
+POST /api/voice/watermark
+Body: multipart/form-data with audio file
+
+# Verify watermark
+GET /api/voice/verify/{watermark_id}
+```
+
+## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    Oracle Server                         │
-│                  129.213.117.130                         │
-├─────────────────────────────────────────────────────────┤
-│  ┌─────────┐  ┌─────────────┐  ┌─────────────────┐      │
-│  │  OSINT  │  │ AI Protect  │  │ Voice Protect   │      │
-│  │  :8000  │  │   :8010     │  │     :8020       │      │
-│  └─────────┘  └─────────────┘  └─────────────────┘      │
-│  ┌─────────┐  ┌─────────────┐  ┌─────────────────┐      │
-│  │Dashboard│  │  Dashboard  │  │   Dashboard     │      │
-│  │  :8200  │  │   :8210     │  │     :8220       │      │
-│  └─────────┘  └─────────────┘  └─────────────────┘      │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                    Oracle Server (ARM)                       │
+│                    129.213.117.130                           │
+├─────────────────────────────────────────────────────────────┤
+│  ┌───────────┐  ┌─────────────┐  ┌─────────────────┐        │
+│  │   OSINT   │  │ AI Protect  │  │ Voice Protect   │        │
+│  │   :8000   │  │   :8010     │  │     :8020       │        │
+│  │  Shodan   │  │   Fawkes    │  │  AI Detection   │        │
+│  │ SpiderFoot│  │             │  │  Watermarking   │        │
+│  └───────────┘  └─────────────┘  └─────────────────┘        │
+│                                                              │
+│  ┌───────────┐  ┌─────────────┐  ┌─────────────────┐        │
+│  │ Dashboard │  │  Dashboard  │  │   Dashboard     │        │
+│  │   :8200   │  │   :8210     │  │     :8220       │        │
+│  └───────────┘  └─────────────┘  └─────────────────┘        │
+│                                                              │
+│  ┌───────────┐  ┌─────────────┐                              │
+│  │SpiderFoot │  │    n8n      │                              │
+│  │   :5001   │  │   :5678     │                              │
+│  └───────────┘  └─────────────┘                              │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## License
+## 📁 Project Structure
+
+```
+aegis-soc/
+├── services/
+│   ├── osint/           # OSINT API (Shodan, SpiderFoot, TheHarvester)
+│   ├── ai-protect/      # AI Protection (Fawkes)
+│   ├── voice-protect/   # Voice Protection
+│   └── spiderfoot/      # SpiderFoot container
+├── dashboards/
+│   ├── osint-dashboard/
+│   ├── ai-protect-dashboard/
+│   └── voice-protect-dashboard/
+├── colab/               # GPU notebooks (MIST, PhotoGuard)
+├── docker-compose.yml
+└── README.md
+```
+
+## 🔐 Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `SHODAN_API_KEY` | Shodan API key (get free at https://account.shodan.io) |
+
+## 📋 Roadmap
+
+- [x] OSINT Service with TheHarvester
+- [x] Shodan integration
+- [x] SpiderFoot integration
+- [x] AI Protection (Fawkes)
+- [x] Voice Protection (Watermarking)
+- [ ] MIST v2 / PhotoGuard (Colab GPU)
+- [ ] SOC Core Service (alerts, clients, cases)
+- [ ] Voice ML models (AntiFake)
+
+## 📄 License
 
 Private - Aegis Intel Ops
