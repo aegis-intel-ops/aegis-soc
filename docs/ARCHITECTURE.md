@@ -4,16 +4,15 @@
 
 ## Services Overview
 
-| Service | API Port | Dashboard | Status |
-|---------|----------|-----------|--------|
-| **Unified Portal** | 8080 | - | ✅ Live |
-| **SOC Core** | 8030 | 8230 | ✅ Live |
-| **OSINT** | 8000 | 8200 | ✅ Live |
-| **Shodan** | - | 8201 | ✅ Live |
-| **AI Protection** | 8010 | 8210 | ✅ Live |
-| **Voice Protection** | 8020 | 8220 | ✅ Live |
-| **SpiderFoot** | 5001 | - | ✅ Live |
-| **n8n Automation** | 5678 | - | ✅ Live |
+| Service | Internal Port | Access (Subdomain) | Status |
+|---------|---------------|--------------------|--------|
+| **Gateway** | 80 | `http://129.213...` | ✅ Live |
+| **SOC Core** | 8030 | `soc.` | ✅ Live |
+| **OSINT** | 8000 | `osint.` | ✅ Live |
+| **Shodan** | - | `shodan.` | ✅ Live |
+| **AI Protection** | 8010 | `ai.` | ✅ Live |
+| **Voice Protection** | 8020 | `voice.` | ✅ Live |
+| **SpiderFoot** | 5001 | `spiderfoot.` | ✅ Live |
 
 ---
 
@@ -97,7 +96,7 @@ Central dashboard linking all services.
 **Port:** 5001
 
 Full OSINT automation platform with web UI.
-Access directly at: http://129.213.117.130:5001
+Access via: `http://spiderfoot.129.213.117.130.nip.io`
 
 ---
 
@@ -108,16 +107,10 @@ Access directly at: http://129.213.117.130:5001
 **OS:** Ubuntu 22.04 ARM
 
 ### Port Allocation
-| Range | Purpose |
-|-------|---------|
-| 5001 | SpiderFoot |
-| 5678 | n8n |
-| 8000-8009 | OSINT |
-| 8010-8019 | AI Protection |
-| 8020-8029 | Voice Protection |
-| 8030-8039 | SOC Core |
-| 8080 | Unified Portal |
-| 8200-8299 | Dashboards |
+| Range | Purpose | Access |
+|-------|---------|--------|
+| 80 | Nginx Gateway | **Public** |
+| 5000-8999 | Internal Services | **Blocked** (Internal Network Only) |
 
 ---
 
