@@ -1,4 +1,4 @@
-const API_BASE = 'http://129.213.117.130:8010';
+const API_BASE = '';
 
 // Health check
 async function checkHealth() {
