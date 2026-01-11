@@ -17,7 +17,7 @@
 ---
 
 ## 1. OSINT Service
-**Port:** 8000 | **Dashboard:** 8200
+**Internal Port:** 8000 | **Access:** `osint.129.213.117.130.nip.io`
 
 ### Core Endpoints
 | Endpoint | Method | Description |
@@ -47,7 +47,7 @@
 ---
 
 ## 2. AI Protection Service
-**Port:** 8010 | **Dashboard:** 8210
+**Internal Port:** 8010 | **Access:** `ai.129.213.117.130.nip.io`
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -61,7 +61,7 @@
 ---
 
 ## 3. Voice Protection Service
-**Port:** 8020 | **Dashboard:** 8220
+**Internal Port:** 8020 | **Access:** `voice.129.213.117.130.nip.io`
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -74,7 +74,7 @@
 ---
 
 ## 4. SOC Core Service (NEW)
-**Port:** 8030 | **Dashboard:** 8230
+**Internal Port:** 8030 | **Access:** `soc.129.213.117.130.nip.io`
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -93,7 +93,7 @@ Central dashboard linking all services.
 ---
 
 ## 6. SpiderFoot (Standalone)
-**Port:** 5001
+**Internal Port:** 5001
 
 Full OSINT automation platform with web UI.
 Access via: `http://spiderfoot.129.213.117.130.nip.io`

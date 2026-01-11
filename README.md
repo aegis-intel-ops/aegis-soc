@@ -29,16 +29,15 @@ docker compose ps
 
 ## 📊 Services
 
-| Service | Port | Description |
-|---------|------|-------------|
-| **Gateway (Nginx)** | **80** | Single secure entry point with Basic Auth |
+| Service | Internal Port | Description |
+|---------|---------------|-------------|
+| **Gateway (Nginx)** | **80 (Public)** | Single secure entry point with Basic Auth |
 | **Unified Portal** | Internal | Central landing page |
 | **SOC Core API** | 8030 | Client, Case, and Alert Management |
 | **OSINT API** | 8000 | Intelligence gathering (Shodan, SpiderFoot, TheHarvester) |
 | **AI Protection** | 8010 | Fawkes face cloaking, image protection |
 | **Voice Protection** | 8020 | AI audio detection, watermarking |
 | **SpiderFoot** | 5001 | Full OSINT automation (100+ sources) |
-| **n8n** | 5678 | Workflow automation |
 
 ### Dashboards (Secured behind Gateway)
 Access via `http://<subdomain>.129.213.117.130.nip.io`
