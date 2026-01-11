@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import health, fawkes
+from routers import health, fawkes, queue
 
 app = FastAPI(
     title="Aegis AI Protection API",
@@ -18,6 +18,7 @@ app.add_middleware(
 
 app.include_router(health.router)
 app.include_router(fawkes.router, prefix="/api/protect", tags=["Protection"])
+app.include_router(queue.router, prefix="/api/protect/queue", tags=["Queue"])
 
 if __name__ == "__main__":
     import uvicorn
