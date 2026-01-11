@@ -15,11 +15,12 @@ echo "SHODAN_API_KEY=your-key-here" > .env
 # Start all services
 docker compose up -d
 
-# Generate Admin Password (if not done)
+# Generate Admin Password
 # Default is 'AegisSec2026!'
-# To change:
-docker run --entrypoint htpasswd httpd:alpine -Bbn newuser newpassword > services/gateway/.htpasswd
-docker compose restart gateway
+# NOTE: This updates the local file. You must REBUILD the gateway to apply it.
+# Warning: 'git pull' may overwrite this file if you don't commit your custom password.
+docker run --rm --entrypoint htpasswd httpd:alpine -Bbn newuser newpassword > services/gateway/.htpasswd
+docker compose up -d --build gateway
 
 
 # Check status
