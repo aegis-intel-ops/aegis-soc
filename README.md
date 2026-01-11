@@ -15,6 +15,13 @@ echo "SHODAN_API_KEY=your-key-here" > .env
 # Start all services
 docker compose up -d
 
+# Generate Admin Password (if not done)
+# Default is 'AegisSec2026!'
+# To change:
+docker run --entrypoint htpasswd httpd:alpine -Bbn newuser newpassword > services/gateway/.htpasswd
+docker compose restart gateway
+
+
 # Check status
 docker compose ps
 ```
@@ -23,7 +30,8 @@ docker compose ps
 
 | Service | Port | Description |
 |---------|------|-------------|
-| **Unified Portal** | **8080** | Central landing page for all services |
+| **Gateway (Nginx)** | **80** | Single secure entry point with Basic Auth |
+| **Unified Portal** | Internal | Central landing page |
 | **SOC Core API** | 8030 | Client, Case, and Alert Management |
 | **OSINT API** | 8000 | Intelligence gathering (Shodan, SpiderFoot, TheHarvester) |
 | **AI Protection** | 8010 | Fawkes face cloaking, image protection |
@@ -31,19 +39,21 @@ docker compose ps
 | **SpiderFoot** | 5001 | Full OSINT automation (100+ sources) |
 | **n8n** | 5678 | Workflow automation |
 
-### Dashboards
+### Dashboards (Secured behind Gateway)
+Access via `http://<subdomain>.129.213.117.130.nip.io`
 
-| Dashboard | Port |
-|-----------|------|
-| Dashboard | Port |
-|-----------|------|
-| **Unified Portal** | **8080** |
-| SOC Dashboard | 8230 |
-| OSINT | 8200 |
-| Shodan | 8201 |
-| AI Protection | 8210 |
-| Voice Protection | 8220 |
-| SpiderFoot (UI) | 5001 |
+| Dashboard | Subdomain |
+|-----------|-----------|
+| **Unified Portal** | `129.213...` (Root) |
+| SOC Dashboard | `soc.` |
+| OSINT | `osint.` |
+| Shodan | `shodan.` |
+| AI Protection | `ai.` |
+| Voice Protection | `voice.` |
+| SpiderFoot | `spiderfoot.` |
+| n8n | `n8n.` |
+
+**Credentials:** Admin / (assigned during deployment)
 
 ## 🔍 OSINT Endpoints
 
