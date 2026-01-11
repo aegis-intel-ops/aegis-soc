@@ -139,6 +139,16 @@ GET /api/voice/verify/{watermark_id}
 │  │ Dashboard │  │     UI      │  │   Automation    │        │
 │  │   :8201   │  │   :5001     │  │     :5678       │        │
 │  └───────────┘  └─────────────┘  └─────────────────┘        │
+│                                                              │
+│  ┌─────────────────────────────────────────────────────────┐  │
+│  │                    Unified Portal                       │  │
+│  │                        :8080                            │  │
+│  └─────────────────────────────────────────────────────────┘  │
+│          │                 │                 │                │
+│    ┌───────────┐     ┌───────────┐     ┌───────────┐          │
+│    │ SOC Core  │     │ SOC Dash  │     │ OSINT ... │          │
+│    │   :8030   │     │   :8230   │     │           │          │
+│    └───────────┘     └───────────┘     └───────────┘          │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -147,13 +157,16 @@ GET /api/voice/verify/{watermark_id}
 ```
 aegis-soc/
 ├── services/
+│   ├── soc-core/        # NEW - Clients, Cases, Alerts
 │   ├── osint/           # OSINT API (Shodan, SpiderFoot, TheHarvester)
 │   ├── ai-protect/      # AI Protection (Fawkes)
 │   ├── voice-protect/   # Voice Protection
 │   └── spiderfoot/      # SpiderFoot container
 ├── dashboards/
+│   ├── main-dashboard/  # Unified Portal
+│   ├── soc-dashboard/   # SOC Mgmt UI
 │   ├── osint-dashboard/
-│   ├── shodan-dashboard/    # NEW - Shodan web UI
+│   ├── shodan-dashboard/
 │   ├── ai-protect-dashboard/
 │   └── voice-protect-dashboard/
 ├── colab/               # GPU notebooks (MIST, PhotoGuard)
@@ -174,8 +187,9 @@ aegis-soc/
 - [x] SpiderFoot integration
 - [x] AI Protection (Fawkes)
 - [x] Voice Protection (Watermarking)
+- [x] SOC Core Service (alerts, clients, cases)
+- [x] Unified Portal
 - [ ] MIST v2 / PhotoGuard (Colab GPU)
-- [ ] SOC Core Service (alerts, clients, cases)
 - [ ] Voice ML models (AntiFake)
 
 ## 📄 License

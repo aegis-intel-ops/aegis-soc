@@ -6,6 +6,8 @@
 
 | Service | API Port | Dashboard | Status |
 |---------|----------|-----------|--------|
+| **Unified Portal** | 8080 | - | ✅ Live |
+| **SOC Core** | 8030 | 8230 | ✅ Live |
 | **OSINT** | 8000 | 8200 | ✅ Live |
 | **Shodan** | - | 8201 | ✅ Live |
 | **AI Protection** | 8010 | 8210 | ✅ Live |
@@ -72,7 +74,26 @@
 
 ---
 
-## 4. SpiderFoot (Standalone)
+## 4. SOC Core Service (NEW)
+**Port:** 8030 | **Dashboard:** 8230
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/health` | GET | Health check |
+| `/api/soc/clients` | CRUD | Client management |
+| `/api/soc/cases` | CRUD | Case tracking workflow |
+| `/api/soc/alerts` | CRUD | Alert system |
+
+---
+
+## 5. Unified Portal
+**Port:** 8080
+
+Central dashboard linking all services.
+
+---
+
+## 6. SpiderFoot (Standalone)
 **Port:** 5001
 
 Full OSINT automation platform with web UI.
@@ -94,6 +115,8 @@ Access directly at: http://129.213.117.130:5001
 | 8000-8009 | OSINT |
 | 8010-8019 | AI Protection |
 | 8020-8029 | Voice Protection |
+| 8030-8039 | SOC Core |
+| 8080 | Unified Portal |
 | 8200-8299 | Dashboards |
 
 ---
@@ -116,3 +139,5 @@ Access directly at: http://129.213.117.130:5001
 | 2026-01-10 | Voice Protection service + dashboard |
 | 2026-01-10 | Shodan integration |
 | 2026-01-10 | SpiderFoot integration |
+| 2026-01-10 | SOC Core Service |
+| 2026-01-10 | Unified Dashboard |
