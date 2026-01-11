@@ -45,6 +45,17 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
 
+  soc-core:
+    build: ./services/soc-core
+    container_name: aegis-soc-core
+    ports:
+      - "8030:8030"
+    restart: unless-stopped
+    volumes:
+      - ./data/soc:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+
   # ===== Dashboards =====
 
   osint-dashboard:
@@ -73,6 +84,13 @@ services:
     container_name: aegis-voice-dashboard
     ports:
       - "8220:80"
+    restart: unless-stopped
+
+  soc-dashboard:
+    build: ./dashboards/soc-dashboard
+    container_name: aegis-soc-dashboard
+    ports:
+      - "8230:80"
     restart: unless-stopped
 
 volumes:

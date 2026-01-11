@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Dashboard - Aegis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>🛡️ Security Operations Center</h1>
+        <div class="status-bar">
+            <span class="status" id="status">Connecting...</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Stats Row -->
+        <section class="stats-row">
+            <div class="stat-card">
+                <h3>Clients</h3>
+                <span class="stat-value" id="clientCount">-</span>
+            </div>
+            <div class="stat-card">
+                <h3>Open Cases</h3>
+                <span class="stat-value" id="openCases">-</span>
+            </div>
+            <div class="stat-card warning">
+                <h3>Unack Alerts</h3>
+                <span class="stat-value" id="unackAlerts">-</span>
+            </div>
+            <div class="stat-card critical">
+                <h3>Critical</h3>
+                <span class="stat-value" id="criticalAlerts">-</span>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Clients Panel -->
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>👤 Clients</h2>
+                    <button onclick="showAddClient()">+ Add</button>
+                </div>
+                <div id="clientList" class="list"></div>
+            </section>
+
+            <!-- Cases Panel -->
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>📋 Active Cases</h2>
+                    <button onclick="showAddCase()">+ New Case</button>
+                </div>
+                <div id="caseList" class="list"></div>
+            </section>
+
+            <!-- Alerts Panel -->
+            <section class="panel wide">
+                <div class="panel-header">
+                    <h2>🚨 Recent Alerts</h2>
+                    <button onclick="acknowledgeAll()">Ack All</button>
+                </div>
+                <div id="alertList" class="list"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add Client Modal -->
+    <div id="addClientModal" class="modal">
+        <div class="modal-content">
+            <h3>Add New Client</h3>
+            <form id="addClientForm">
+                <input type="text" id="clientName" placeholder="Client Name" required>
+                <input type="text" id="clientCodeName" placeholder="Code Name (optional)">
+                <input type="email" id="clientEmail" placeholder="Email">
+                <select id="clientRisk">
+                    <option value="low">Low Risk</option>
+                    <option value="medium" selected>Medium Risk</option>
+                    <option value="high">High Risk</option>
+                    <option value="critical">Critical Risk</option>
+                </select>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal('addClientModal')">Cancel</button>
+                    <button type="submit">Add Client</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Case Modal -->
+    <div id="addCaseModal" class="modal">
+        <div class="modal-content">
+            <h3>Create New Case</h3>
+            <form id="addCaseForm">
+                <input type="text" id="caseTitle" placeholder="Case Title" required>
+                <textarea id="caseDescription" placeholder="Description"></textarea>
+                <select id="caseClient">
+                    <option value="">No Client</option>
+                </select>
+                <select id="casePriority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="high">High Priority</option>
+                    <option value="critical">Critical Priority</option>
+                </select>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal('addCaseModal')">Cancel</button>
+                    <button type="submit">Create Case</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
