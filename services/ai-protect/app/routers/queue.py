@@ -1,9 +1,10 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Form
 from fastapi.responses import FileResponse
-from typing import List, Dict
+from typing import List, Dict, Optional
 import shutil
 import os
 import time
+import uuid
 from models import Job, JobStatus, JobType
 
 router = APIRouter()
