@@ -23,6 +23,8 @@ docker compose ps
 
 | Service | Port | Description |
 |---------|------|-------------|
+| **Unified Portal** | **8080** | Central landing page for all services |
+| **SOC Core API** | 8030 | Client, Case, and Alert Management |
 | **OSINT API** | 8000 | Intelligence gathering (Shodan, SpiderFoot, TheHarvester) |
 | **AI Protection** | 8010 | Fawkes face cloaking, image protection |
 | **Voice Protection** | 8020 | AI audio detection, watermarking |
@@ -33,6 +35,10 @@ docker compose ps
 
 | Dashboard | Port |
 |-----------|------|
+| Dashboard | Port |
+|-----------|------|
+| **Unified Portal** | **8080** |
+| SOC Dashboard | 8230 |
 | OSINT | 8200 |
 | Shodan | 8201 |
 | AI Protection | 8210 |

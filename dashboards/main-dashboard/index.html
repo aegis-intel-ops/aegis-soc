@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aegis SOC Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="scan-line"></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h1>AEGIS SOC</h1>
+        </div>
+        <div class="status-indicator">
+            <span class="dot"></span> SYSTEM ONLINE
+        </div>
+    </header>
+
+    <main>
+        <div class="grid">
+            <!-- SOC Core -->
+            <a href="http://129.213.117.130:8230" class="card core" target="_blank">
+                <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+                <h2>SOC Core</h2>
+                <p>Client management, case tracking, and centralized alert system.</p>
+                <div class="card-footer">Port 8230</div>
+            </a>
+
+            <!-- OSINT -->
+            <a href="http://129.213.117.130:8200" class="card osint" target="_blank">
+                <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+                <h2>OSINT Dashboard</h2>
+                <p>Domain reconnaissance, email lookup, and username search.</p>
+                <div class="card-footer">Port 8200</div>
+            </a>
+
+            <!-- Shodan -->
+            <a href="http://129.213.117.130:8201" class="card shodan" target="_blank">
+                <div class="card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                <h2>Shodan Intel</h2>
+                <p>IoT search engine, IP analysis, and vulnerability scanning.</p>
+                <div class="card-footer">Port 8201</div>
+            </a>
+
+            <!-- SpiderFoot -->
+            <a href="http://129.213.117.130:5001" class="card spiderfoot" target="_blank">
+                <div class="card-icon"><i class="fa-solid fa-spider"></i></div>
+                <h2>SpiderFoot</h2>
+                <p>Automated OSINT automation with 100+ data sources.</p>
+                <div class="card-footer">Port 5001</div>
+            </a>
+
+            <!-- AI Protection -->
+            <a href="http://129.213.117.130:8210" class="card ai" target="_blank">
+                <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <h2>AI Protection</h2>
+                <p>Fawkes face cloaking against facial recognition models.</p>
+                <div class="card-footer">Port 8210</div>
+            </a>
+
+            <!-- Voice Protection -->
+            <a href="http://129.213.117.130:8220" class="card voice" target="_blank">
+                <div class="card-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+                <h2>Voice Protection</h2>
+                <p>Audio deepfake detection and watermarking.</p>
+                <div class="card-footer">Port 8220</div>
+            </a>
+
+            <!-- n8n -->
+            <a href="http://129.213.117.130:5678" class="card automation" target="_blank">
+                <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                <h2>Workflow Automation</h2>
+                <p>n8n node-based workflow automation for SOC ops.</p>
+                <div class="card-footer">Port 5678</div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="api-links">
+            <span>API Docs:</span>
+            <a href="http://129.213.117.130:8030/docs" target="_blank">SOC Core</a>
+            <a href="http://129.213.117.130:8000/docs" target="_blank">OSINT</a>
+            <a href="http://129.213.117.130:8010/docs" target="_blank">AI Protect</a>
+            <a href="http://129.213.117.130:8020/docs" target="_blank">Voice Protect</a>
+        </div>
+        <p>Aegis Intel Ops | Authorized Personnel Only</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

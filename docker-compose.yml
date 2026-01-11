@@ -93,5 +93,12 @@ services:
       - "8230:80"
     restart: unless-stopped
 
+  main-dashboard:
+    build: ./dashboards/main-dashboard
+    container_name: aegis-main-dashboard
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
 volumes:
   data:
