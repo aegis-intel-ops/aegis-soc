@@ -5,7 +5,9 @@ from routers import health, fawkes, queue
 app = FastAPI(
     title="Aegis AI Protection API",
     description="AI-powered image and face protection service",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json"
 )
 
 app.add_middleware(

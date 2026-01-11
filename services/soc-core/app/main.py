@@ -17,7 +17,9 @@ app = FastAPI(
     title="Aegis SOC Core API",
     description="Security Operations Center - Client, Case, and Alert Management",
     version="1.1.0",
-    lifespan=lifespan
+    lifespan=lifespan,
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json"
 )
 
 # Add security middleware

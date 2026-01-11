@@ -5,7 +5,9 @@ from routers import health, analyze, watermark
 app = FastAPI(
     title="Aegis Voice Protection API",
     description="AI audio detection and watermarking service",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json"
 )
 
 app.add_middleware(

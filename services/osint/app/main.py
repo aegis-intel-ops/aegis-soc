@@ -6,7 +6,9 @@ from security import RateLimitMiddleware, LoggingMiddleware, verify_api_key
 app = FastAPI(
     title="Aegis OSINT API",
     description="Open Source Intelligence gathering service",
-    version="2.1.0"
+    version="2.1.0",
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json"
 )
 
 # Security middleware
